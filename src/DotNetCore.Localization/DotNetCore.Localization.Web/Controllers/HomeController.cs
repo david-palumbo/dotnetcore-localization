@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using DotNetCore.Localization.Web.Resources.Default;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DotNetCore.Localization.Web.Controllers
@@ -15,7 +16,7 @@ namespace DotNetCore.Localization.Web.Controllers
 
         public IActionResult About()
         {
-            ViewData["Message"] = "Your application description page.";
+            ViewData["Message"] = new ResourceRoot().HomeController.AboutMessage;
 
             return View();
         }
