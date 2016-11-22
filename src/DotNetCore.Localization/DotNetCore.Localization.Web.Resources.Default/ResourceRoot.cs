@@ -7,3 +7,4 @@ namespace DotNetCore.Localization.Web.Resources.Default
         private static readonly HomeControllerResource _homeController = new HomeControllerResource();
         public virtual HomeControllerResource HomeController => _homeController;
     }
+}

@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -11,6 +10,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using DotNetCore.Localization.Web.Data;
 using DotNetCore.Localization.Web.Models;
+using DotNetCore.Localization.Web.Resources.Default;
+using DotNetCore.Localization.Web.Resources.EsMx;
 using DotNetCore.Localization.Web.Services;
 
 namespace DotNetCore.Localization.Web
@@ -32,6 +33,8 @@ namespace DotNetCore.Localization.Web
 
             builder.AddEnvironmentVariables();
             Configuration = builder.Build();
+
+            RegisterResources();
         }
 
         public IConfigurationRoot Configuration { get; }
@@ -83,6 +86,11 @@ namespace DotNetCore.Localization.Web
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
+        }
+
+        private void RegisterResources()
+        {
+            ResourceRegistry.Instance.RegisterResourceRoot("es-Mx", new DotNetCore.Localization.Web.Resources.EsMx.ResourceRoot());
         }
     }
 }

@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
 using DotNetCore.Localization.Web.Resources.Default;
@@ -16,7 +17,9 @@ namespace DotNetCore.Localization.Web.Controllers
 
         public IActionResult About()
         {
-            ViewData["Message"] = new ResourceRoot().HomeController.AboutMessage;
+            ViewData["Message"] = ResourceRegistry.Instance.Get("en-US").HomeController.AboutMessage;
+            //ViewData["Message"] = CultureInfo.CurrentUICulture.Name;
+
 
             return View();
         }
